@@ -1,9 +1,9 @@
-name: Automake Build
+name: CI Build and Test
 
 on:
   push:
     branches:
-      - branchAutomake
+      - branchAutoTest
 
 jobs:
   build:
@@ -22,10 +22,11 @@ jobs:
           autoconf
           automake --add-missing
 
-      - name: Build the project
-        run: |
-          ./configure
-          make
+      - name: Configure project
+        run: ./configure
 
-      - name: Create tarball
-        run: make dist
+      - name: Build project
+        run: make
+
+      - name: Run tests
+        run: make check
