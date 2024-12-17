@@ -1,0 +1,3 @@
+- name: Build Debian package
+	run: |
+		dpkg-buildpackage -us -uc
