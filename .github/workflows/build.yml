@@ -1,9 +1,9 @@
-name: C++ Build
+name: Automake Build
 
 on:
   push:
     branches:
-      - branchMake
+      - branchAutomake
 
 jobs:
   build:
@@ -14,16 +14,18 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: sudo apt-get install -y g++
+        run: sudo apt-get install -y automake autoconf libtool g++
 
-      - name: Debug – List all files
-        run: ls -R
-
-      - name: Debug – Show Makefile
-        run: cat Makefile
+      - name: Generate configure script
+        run: |
+          aclocal
+          autoconf
+          automake --add-missing
 
       - name: Build the project
-        run: make
+        run: |
+          ./configure
+          make
 
-      - name: Debug – Show object files
-        run: ls -l src/*.o || true
+      - name: Create tarball
+        run: make dist
