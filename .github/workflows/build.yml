@@ -2,7 +2,7 @@ name: C++ Build
 
 on:
   push:
-    branches:
+  branches:
       - branchMake
 
 jobs:
@@ -16,5 +16,14 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y g++
 
+      - name: Debug – List all files
+        run: ls -R
+
+      - name: Debug – Show Makefile
+        run: cat Makefile
+
       - name: Build the project
         run: make
+
+      - name: Debug – Show object files
+        run: ls -l src/*.o || true
