@@ -2,7 +2,7 @@ name: C++ Build
 
 on:
   push:
-  branches:
+    branches:
       - branchMake
 
 jobs:
