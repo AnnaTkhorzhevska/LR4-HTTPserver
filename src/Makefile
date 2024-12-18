@@ -142,12 +142,12 @@ AUTOCONF = ${SHELL} '/home/anna/LR2/missing' autoconf
 AUTOHEADER = ${SHELL} '/home/anna/LR2/missing' autoheader
 AUTOMAKE = ${SHELL} '/home/anna/LR2/missing' automake-1.16
 AWK = gawk
-CPPFLAGS = 
+CPPFLAGS = -Wdate-time -D_FORTIFY_SOURCE=3
 CSCOPE = cscope
 CTAGS = ctags
 CXX = g++
-CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -g -O2
+CXXDEPMODE = depmode=none
+CXXFLAGS = -g -O2 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/home/anna/LR2=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -fdebug-prefix-map=/home/anna/LR2=/usr/src/app-1.0-1
 CYGPATH_W = echo
 DEFS = -DPACKAGE_NAME=\"app\" -DPACKAGE_TARNAME=\"app\" -DPACKAGE_VERSION=\"1.0\" -DPACKAGE_STRING=\"app\ 1.0\" -DPACKAGE_BUGREPORT=\"annathorzevskaa7@gmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"app\" -DVERSION=\"1.0\"
 DEPDIR = .deps
@@ -161,7 +161,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LDFLAGS = 
+LDFLAGS = -Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl,-z,relro
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
@@ -191,7 +191,7 @@ am__quote =
 am__tar = $${TAR-tar} chof - "$$tardir"
 am__untar = $${TAR-tar} xf -
 bindir = ${exec_prefix}/bin
-build_alias = 
+build_alias = x86_64-linux-gnu
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
@@ -201,24 +201,24 @@ exec_prefix = ${prefix}
 host_alias = 
 htmldir = ${docdir}
 includedir = ${prefix}/include
-infodir = ${datarootdir}/info
+infodir = ${prefix}/share/info
 install_sh = ${SHELL} /home/anna/LR2/install-sh
-libdir = ${exec_prefix}/lib
+libdir = ${prefix}/lib/x86_64-linux-gnu
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
-localstatedir = ${prefix}/var
-mandir = ${datarootdir}/man
+localstatedir = /var
+mandir = ${prefix}/share/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /usr/local
+prefix = /usr
 program_transform_name = s,x,x,
 psdir = ${docdir}
-runstatedir = ${localstatedir}/run
+runstatedir = /run
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
-sysconfdir = ${prefix}/etc
+sysconfdir = /etc
 target_alias = 
 top_build_prefix = ../
 top_builddir = ..

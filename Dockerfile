@@ -1,13 +1,19 @@
+# Dockerfile
 FROM gcc:latest
 
+# Створення робочої директорії
 WORKDIR /app
 
-# Скопіювати файли
+# Копіювання вихідних файлів і Makefile.am
 COPY src /app/src
-COPY Makefile /app/Makefile
+COPY Makefile.am /app/Makefile.am
+COPY configure.ac /app/configure.ac
 
-# Зібрати програму
+# Генерація Makefile.in та Makefile
+RUN aclocal && automake --add-missing && autoconf
+
+# Збірка програми
 RUN make
 
-# Запустити сервер
+# Запуск сервера
 CMD ["./app"]
